@@ -2,7 +2,6 @@ apiVersion: fluentbit.fluent.io/v1alpha2
 kind: FluentBit
 metadata:
   name: fluent-bit
-  namespace: fluent
   labels:
     app.kubernetes.io/name: fluent-bit
 spec:
@@ -20,15 +19,6 @@ spec:
   fluentBitConfigName: fluent-bit-config
   tolerations:
     - operator: Exists
-  # affinity:
-  #   nodeAffinity:
-  #     requiredDuringSchedulingIgnoredDuringExecution:
-  #       nodeSelectorTerms:
-  #       - matchExpressions:
-  #         - key: node-role.kubernetes.io/edge
-  #           operator: DoesNotExist
-  serviceAccountAnnotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::861370837605:role/fluentbit-role
   envVars:
     - name: AWS_ACCESS_KEY_ID
       valueFrom:
@@ -42,60 +32,7 @@ spec:
           key: AWS_SECRET_ACCESS_KEY
   # hostNetwork: true
   # dnsPolicy: ClusterFirstWithHostNet
-  
-# ---
-# apiVersion: fluentbit.fluent.io/v1alpha2
-# kind: ClusterFluentBitConfig
-# metadata:
-#   name: fluent-bit-config
-#   labels:
-#     app.kubernetes.io/name: fluent-bit
-# spec:
-#   service:
-#     # parsersFile: parsers.conf
-#     flushSeconds: 5
-#     graceSeconds: 30
-#     logLevel: error
-#     daemon: false
-#     httpServer: true
-#     storage:
-#       path: /var/fluent-bit/state/flb-storage/
-#       sync: normal
-#       checksum: "off"
-#       backlogMemLimit: 5M
-#   inputSelector:
-#     matchLabels:
-#       fluentbit.fluent.io/enabled: "true"
-#       fluentbit.fluent.io/mode: "fluentbit-only"
-#   filterSelector:
-#     matchLabels:
-#       fluentbit.fluent.io/enabled: "true"
-#       fluentbit.fluent.io/mode: "fluentbit-only"
-#   outputSelector:
-#     matchLabels:
-#       fluentbit.fluent.io/enabled: "true"
-#       fluentbit.fluent.io/mode: "fluentbit-only"
-# ---
-# apiVersion: fluentbit.fluent.io/v1alpha2
-# kind: ClusterInput
-# metadata:
-#   name: application
-#   # namespace: fluentbit-cloudwatch
-#   labels:
-#     fluentbit.fluent.io/enabled: "true"
-#     fluentbit.fluent.io/mode: "fluentbit-only"
-# spec:
-#   tail:
-#     tag: application.*
-#     path: /var/log/containers/*.log
-#     multilineParser: docker
-#     db: /var/fluent-bit/state/flb_container.db
-#     memBufLimit: 50MB
-#     skipLongLines: true
-#     refreshIntervalSeconds: 10
-#     rotateWaitSeconds: 30
-#     storageType: filesystem
-#     readFromHead: false
+
 # ---
 # apiVersion: fluentbit.fluent.io/v1alpha2
 # kind: ClusterFilter
@@ -119,20 +56,5 @@ spec:
 #       useKubelet: false
 #       # kubeletPort: 10250
 #       bufferSize: "0"
-# ---
-# apiVersion: fluentbit.fluent.io/v1alpha2
-# kind: Output
-# metadata:
-#   name: cloudwatch
-#   labels:
-#     fluentbit.fluent.io/enabled: "true"
-#     fluentbit.fluent.io/mode: "fluentbit-only"
-# spec:
-#   match: application.*
-#   cloudWatch:
-#     region: eu-west-1
-#     logGroupName: /kaytu/application
-#     logStreamPrefix: kaytu-
-#     autoCreateGroup: true
-#     roleArn: "arn:aws:iam::861370837605:role/fluentbit-role"
+
 

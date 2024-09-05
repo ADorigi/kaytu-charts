@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/name: fluent-bit
 spec:
   service:
-    parsersFile: parsers.conf
+    # parsersFile: parsers.conf
     flushSeconds: 5
     graceSeconds: 30
     logLevel: error
@@ -53,3 +53,20 @@ spec:
     storageType: filesystem
     readFromHead: false
 
+---
+apiVersion: fluentbit.fluent.io/v1alpha2
+kind: ClusterOutput
+metadata:
+  name: cloudwatch
+  labels:
+    fluentbit.fluent.io/enabled: "true"
+    fluentbit.fluent.io/mode: "fluentbit-only"
+spec:
+  match: application.*
+  cloudWatch:
+    region: eu-west-1
+    logGroupName: /kaytu/application
+    logStreamPrefix: kaytu-
+    autoCreateGroup: true
+    # roleArn: "arn:aws:iam::861370837605:role/fluentbit-role"
+    # stsEndpoint: https://sts.eu-west-1.amazonaws.com
