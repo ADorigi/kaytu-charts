@@ -59,6 +59,7 @@ opengovernance:
     securityGroupID: "sg-xxx"
     subnetID: "subnet-xxx"
   vault:
+    enabled: true
     provider: hashicorp-vault
     aws:
       region: us-east-2
@@ -72,6 +73,7 @@ opengovernance:
       clientSecret: "xxx"
     keyID: "workspace-creds"
 dex:
+  enabled: true
   configSecret:
     create: false
   config:
@@ -538,6 +540,7 @@ opensearch-dashboards:
       memory: "500Mi"
       cpu: "200m"
 nats:
+  enabled: true
   global:
     labels:
       app: job-queue

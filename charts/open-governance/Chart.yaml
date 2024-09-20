@@ -36,6 +36,15 @@ dependencies:
   - name: opensearch-dashboards
     version: 2.20.0
     condition: opensearch-dashboards.enabled
+  - name: dex
+    version: 0.18.0
+    condition: dex.enabled
+  - name: vault
+    version: 0.28.1
+    condition: opengovernance.vault.enabled
+  - name: nats
+    version: 1.2.2
+    condition: nats.enabled
 
 maintainers:
   - name: Kaytu
