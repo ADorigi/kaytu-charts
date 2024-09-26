@@ -1,9 +1,10 @@
 name: Digital Ocean Deployment
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+#   push:
+#     branches:
+#       - main
 
 env:
   do_cluster_name: ${{ vars.DO_CLUSTER_NAME }}
