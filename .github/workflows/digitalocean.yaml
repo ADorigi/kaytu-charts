@@ -10,7 +10,7 @@ env:
   do_cluster_name: ${{ vars.DO_CLUSTER_NAME }}
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Install doctl
@@ -20,9 +20,7 @@ jobs:
       - name: Save DigitalOcean kubeconfig with short-lived credentials
         run: doctl kubernetes cluster kubeconfig save --expiry-seconds 1200 ${{ env.do_cluster_name }}
       - uses: azure/setup-helm@v4.2.0
-        with:
-            version: 'default' 
-        id: install
+        name: Install Helm
       - name: Add Kaytu-charts helm repository
         run: helm repo add opengovernance https://kaytu-io.github.io/kaytu-charts && helm repo update
       - name: Install opengovernance
