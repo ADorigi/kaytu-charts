@@ -37,6 +37,33 @@ entries:
   open-governance:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-10-02T19:23:01.90736538Z"
+    dependencies:
+    - condition: keda.enabled
+      name: keda
+      repository: ""
+      version: 2.15.1
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: ""
+      version: 15.5.21
+    - condition: opensearch.enabled
+      name: opensearch
+      repository: ""
+      version: 2.22.0
+    - condition: opensearch-dashboards.enabled
+      name: opensearch-dashboards
+      repository: ""
+      version: 2.20.0
+    description: A Helm chart for deploying open-governance to Kubernetes
+    digest: fa7df4ee95a3041bc795d76bf8283da73357ea27d239f81c7259f405a92c262f
+    name: open-governance
+    type: application
+    urls:
+    - https://github.com/ADorigi/kaytu-charts/releases/download/open-governance-0.1.68/open-governance-0.1.68.tgz
+    version: 0.1.68
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-10-02T18:45:09.323312009Z"
     dependencies:
     - condition: keda.enabled
@@ -62,4 +89,4 @@ entries:
     urls:
     - https://github.com/ADorigi/kaytu-charts/releases/download/open-governance-0.1.67/open-governance-0.1.67.tgz
     version: 0.1.67
-generated: "2024-10-02T18:45:09.323321697Z"
+generated: "2024-10-02T19:23:01.907380218Z"
