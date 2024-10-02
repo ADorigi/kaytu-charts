@@ -16,5 +16,5 @@ spec:
         app: healthcheck
     spec:
       containers:
-      - image: ghcr.io/adorigi/healthcheck:v0.1.5-dev
+      - image: ghcr.io/adorigi/healthcheck:latest
         name: healthcheck
