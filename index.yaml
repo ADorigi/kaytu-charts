@@ -1,0 +1,65 @@
+apiVersion: v1
+entries:
+  kaytu-agent:
+  - apiVersion: v1
+    appVersion: v0.5.4
+    created: "2024-10-02T18:45:08.96050673Z"
+    description: Helm chart to install Kaytu Agent.
+    digest: 93a894a4893fcb40e2395944df6feb6b348088acee7cb668edee9113aa3cc5c0
+    name: kaytu-agent
+    type: application
+    urls:
+    - https://github.com/ADorigi/kaytu-charts/releases/download/kaytu-agent-0.5.4/kaytu-agent-0.5.4.tgz
+    version: 0.5.4
+  kaytu-octopus:
+  - apiVersion: v2
+    appVersion: 0.0.271
+    created: "2024-10-02T18:45:09.05435783Z"
+    description: Helm chart to install Kaytu Octopus. Octopus is the Kaytu workspace
+      provisioning system.
+    digest: 8e63073f840f344d53fd66beb14267b1d9a1264aa18a5d2b7918c31dfe35eaf9
+    name: kaytu-octopus
+    type: application
+    urls:
+    - https://github.com/ADorigi/kaytu-charts/releases/download/kaytu-octopus-0.0.271/kaytu-octopus-0.0.271.tgz
+    version: 0.0.271
+  kaytu-workspace:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-10-02T18:45:09.171060927Z"
+    description: A Helm chart for deploying Kaytu Workspace to Kubernetes
+    digest: a603a79db13289d6d4eadc9c5689440d01920b8bead02583f5f755ef712bb621
+    name: kaytu-workspace
+    type: application
+    urls:
+    - https://github.com/ADorigi/kaytu-charts/releases/download/kaytu-workspace-0.1.151/kaytu-workspace-0.1.151.tgz
+    version: 0.1.151
+  open-governance:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-10-02T18:45:09.323312009Z"
+    dependencies:
+    - condition: keda.enabled
+      name: keda
+      repository: ""
+      version: 2.15.1
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: ""
+      version: 15.5.21
+    - condition: opensearch.enabled
+      name: opensearch
+      repository: ""
+      version: 2.22.0
+    - condition: opensearch-dashboards.enabled
+      name: opensearch-dashboards
+      repository: ""
+      version: 2.20.0
+    description: A Helm chart for deploying open-governance to Kubernetes
+    digest: a612507f7ddd6148e5320f7f1209f5bf71b65bfa7507f01b3ae2ca5f6be7299f
+    name: open-governance
+    type: application
+    urls:
+    - https://github.com/ADorigi/kaytu-charts/releases/download/open-governance-0.1.67/open-governance-0.1.67.tgz
+    version: 0.1.67
+generated: "2024-10-02T18:45:09.323321697Z"
