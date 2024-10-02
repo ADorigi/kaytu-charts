@@ -2,6 +2,11 @@ name: Digital Ocean Deployment
 
 on:
   workflow_dispatch:
+  workflow_run:
+    workflows: ["Release Charts"]
+    types:
+      - completed
+
 #   push:
 #     branches:
 #       - main
