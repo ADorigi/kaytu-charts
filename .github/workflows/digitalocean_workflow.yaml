@@ -27,6 +27,6 @@ jobs:
       - uses: azure/setup-helm@v4.2.0
         name: Install Helm
       - name: Add Kaytu-charts helm repository
-        run: helm repo add opengovernance https://kaytu-io.github.io/kaytu-charts && helm repo update
+        run: helm repo add opengovernance https://${{ github.repository_owner }}.github.io/kaytu-charts && helm repo update
       - name: Install opengovernance
         run: helm install -n opengovernance opengovernance opengovernance/open-governance --create-namespace --timeout=10m
